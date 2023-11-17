@@ -71,17 +71,20 @@ class account:
         self.__savetojsonfile()
 
     def may_test(self, ID) -> str:
-        mal = "Siz yaratgan testlar:"
-        dat = self.__data["account"][str(ID)]["test"][::-1]
-        k = 0
-        if len(dat) != 0:
-            for i in dat:
-                k += 1
-                a = tes.get_test_mal_full(str(i))
-                mal += f"\n\n🔠 {k}.{list(a['test'][0].keys())[0]}\n\tTestlar soni: {len(a['test'])}\n\tTest yaratilgan sana: {a['time']}\n\tTest codi: {str(i)}"
-            mal += f"\n\nsiz yaratgan testlar soni: {len(dat)}"
-            return mal
-        else:
+        try:
+            mal = "Siz yaratgan testlar:"
+            dat = self.__data["account"][str(ID)]["test"][::-1]
+            k = 0
+            if len(dat) != 0:
+                for i in dat:
+                    k += 1
+                    a = tes.get_test_mal_full(str(i))
+                    mal += f"\n\n🔠 {k}.{list(a['test'][0].keys())[0]}\n\tTestlar soni: {len(a['test'])}\n\tTest yaratilgan sana: {a['time']}\n\tTest codi: {str(i)}"
+                mal += f"\n\nsiz yaratgan testlar soni: {len(dat)}"
+                return mal
+            else:
+                return "😥 Siz hali test tuzmadingiz."
+        except Exception:
             return "😥 Siz hali test tuzmadingiz."
 
     def __savetojsonfile(self):

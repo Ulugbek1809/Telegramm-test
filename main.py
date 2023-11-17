@@ -410,14 +410,15 @@ async def test_yechi(call: types.CallbackQuery, state: FSMContext):
     cod = database.tes.get_test_mal_full(str(tcod))
     await call.answer(cache_time=15)
     await call.message.delete()
-    if ish == "tj" and cod['test'][hoz][bolim]["tj"] == dat:
-        await state.update_data({"vaz": "tj"})
-        tru.append(1)
-        await state.update_data({"tru": tru})
-        await call.message.answer(f"✔ {hoz + 1}-to'g'ri javob")
-    elif ish == "tj" and cod['test'][hoz][bolim]["tj"] != dat:
-        await state.update_data({"vaz": "tj"})
-        await call.message.answer(f"❌ {hoz + 1}-xato javob")
+    if ish == "tj":
+        if cod['test'][hoz][bolim]["tj"] == dat:
+            await state.update_data({"vaz": "tj"})
+            tru.append(1)
+            await state.update_data({"tru": tru})
+            await call.message.answer(f"✔ {hoz + 1}-to'g'ri javob")
+        else:
+            await state.update_data({"vaz": "tj"})
+            await call.message.answer(f"❌ {hoz + 1}-xato javob")
     if hoz < son:
         await state.update_data({"xozir": hoz + 1})
         if cod['test'][hoz + 1][bolim]["method"] == "yoz" and cod['test'][hoz + 1][bolim]["var"] == 4:
