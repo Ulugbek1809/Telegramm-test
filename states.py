@@ -1,0 +1,25 @@
+from aiogram.dispatcher.filters.state import StatesGroup, State
+
+
+class registr(StatesGroup):
+    ism = State()
+    familya = State()
+    telefon = State()
+    main = State()
+    testnomi = State()
+    tan = State()
+    rasm = State()
+    izohrasm = State()
+    avar = State()
+    bvar = State()
+    cvar = State()
+    dvar = State()
+    tj2 = State()
+    tj4 = State()
+    izoh = State()
+    testcod = State()
+    testyechish = State()
+    delet_test = State()
+    rism = State()
+    rfam = State()
+    rtel = State()
